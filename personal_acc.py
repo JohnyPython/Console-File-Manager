@@ -60,5 +60,3 @@ def exit_fun():
 
 
 menu_points()
-print(wallet)
-print(history_of_purchases)

@@ -1,102 +1,64 @@
-
-
-def console_menu_points():
-    print('***********')
-    print('1  *Create folder*')
-    print('2  *Delete(folder/file)*')
-    print('3  *View content of the directory*')
-    print('4  *View folders*')
-    print('5  *View only files*')
-    print('6  *About OS*')
-    print('7  *About creator*')
-    print('8  *Play quiz*')
-    print('9  *Bank account*')
-    print('10 *Change directory*')
-    print('11 *Exit*\n***********')
-    console_fail_manager()
-
-
-def console_fail_manager():
-    while True:
-        choose = input('Enter the menu number: ')
-        if choose == '1':
-            create_folder_fun()
-            break
-        elif choose == '2':
-            delete_folder_or_file()
-            break
-        elif choose == '3':
-            directory_content()
-            break
-        elif choose == '4':
-            view_folders_fun()
-            break
-        elif choose == '5':
-            view_file_fun()
-            break
-        elif choose == '6':
-            os_fun()
-            break
-        elif choose == '7':
-            about_creator()
-            break
-        elif choose == '8':
-            play_quiz()
-            break
-        elif choose == '9':
-            bank_account()
-            break
-        elif choose == '10':
-            change_directory()
-            break
-        elif choose == '11':
-            print('Good luck!!!!')
-            break
-        else:
-            print('Not correct input!\nTry again!')
-
-
-
-
-console_menu_points()
+import os
+import subprocess
 
 
 def create_folder_fun():
-    pass
+    folder_name = input('Enter the folder name: ')
+    os.mkdir(folder_name)
 
 
 def delete_folder_or_file():
-    pass
+    file_or_folder_del = input('You want delete folder or file?:  ')
+    if file_or_folder_del == 'file':
+        try:
+            fail_name = input('Enter the fail name(example:fail.txt): ')
+            os.remove(fail_name)
+            print(f'{fail_name} was successfully deleted!')
+        except FileNotFoundError:
+            print('That file was not found!')
+    elif file_or_folder_del == 'folder':
+        try:
+            folder_name = input('Enter the folder name: ')
+            os.rmdir(folder_name)
+            print(f'{folder_name} was successfully deleted!')
+        except FileNotFoundError:
+            print('That folder was not found!')
+    else:
+        print('Incorrect input!Try again!')
+        delete_folder_or_file()
 
 
 def directory_content():
-    pass
+    os.listdir()
+    print("All folders and files:", os.listdir())
 
 
 def view_folders_fun():
-    pass
+    path = os.getcwd()
+    for root, dirs, files in os.walk(path):
+        print("The dirs are: ", dirs)
 
 
 def view_file_fun():
-    pass
+    path = os.getcwd()
+    for root, dirs, files in os.walk(path):
+        print("The fails are: ", files)
 
 
 def os_fun():
-    pass
+    print(os.name)
+    print(os.environ)
 
 
 def about_creator():
-    pass
-
-
-def play_quiz():
-    pass
-
-
-def bank_account():
-    pass
+    print('Lorem ipsum dolor sit amet, consectetur adipiscing elit,'
+          ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+          'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+          ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
+          ' Excepteur sint occaecat cupidatat non proident, '
+          'sunt in culpa qui officia deserunt mollit anim id est laborum.')
 
 
 def change_directory():
-    pass
-
+    choose_new_dir = input('Enter the name of dir: ')
+    os.chdir(choose_new_dir)

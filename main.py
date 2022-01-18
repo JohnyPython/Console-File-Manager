@@ -1,5 +1,5 @@
 from console_functions import create_folder_fun, change_directory, delete_folder_or_file, directory_content
-from console_functions import view_folders_fun, view_file_fun
+from console_functions import view_folders_fun, view_file_fun, os_fun, about_creator
 from personal_acc import bank_account
 from quiz import play_quiz
 

@@ -1,5 +1,5 @@
 import os
-import re
+import subprocess
 
 
 def create_folder_fun():
@@ -34,32 +34,29 @@ def directory_content():
 
 
 def view_folders_fun():
-    folders_and_files_list = os.listdir()
-    only_fails_list = [x for x in folders_and_files_list if '.' in x]
-    print(only_fails_list)
-
+    path = os.getcwd()
+    for root, dirs, files in os.walk(path):
+        print("The dirs are: ", dirs)
 
 
 def view_file_fun():
     path = os.getcwd()
-    for files in os.walk(path):
+    for root, dirs, files in os.walk(path):
         print("The fails are: ", files)
 
 
 def os_fun():
-    pass
+    print(os.name)
+    print(os.environ)
 
 
 def about_creator():
-    pass
-
-
-def play_quiz():
-    pass
-
-
-def bank_account():
-    pass
+    print('Lorem ipsum dolor sit amet, consectetur adipiscing elit,'
+          ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+          'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+          ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
+          ' Excepteur sint occaecat cupidatat non proident, '
+          'sunt in culpa qui officia deserunt mollit anim id est laborum.')
 
 
 def change_directory():

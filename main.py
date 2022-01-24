@@ -43,7 +43,7 @@ def console_fail_manager():
             return_to_main_menu()
             break
         elif choose == '3':
-            directory_content()
+            print(directory_content())
             return_to_main_menu()
             break
         elif choose == '4':

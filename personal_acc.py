@@ -54,5 +54,4 @@ def bank_account():
     def exit_fun():
         print('See you later!')
 
-
     menu_points()

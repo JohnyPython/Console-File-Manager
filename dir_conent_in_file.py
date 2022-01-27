@@ -11,6 +11,7 @@ def dirs_names_fun():
         f.write(f'Dirs: {x}\n')
 
 
+
 def file_name_fun():
     result_fails = []
     for item in os.listdir():

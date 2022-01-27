@@ -4,7 +4,7 @@ import subprocess
 
 def create_folder_fun():
     folder_name = input('Enter the folder name: ')
-    os.mkdir(folder_name)
+    return os.mkdir(folder_name)
 
 
 def delete_folder_or_file():
@@ -29,8 +29,7 @@ def delete_folder_or_file():
 
 
 def directory_content():
-    os.listdir()
-    print("All folders and files:", os.listdir())
+    return "All folders and files:", os.listdir()
 
 
 def view_folders_fun():

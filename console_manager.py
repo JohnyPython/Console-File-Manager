@@ -2,21 +2,23 @@ from console_functions import create_folder_fun, change_directory, delete_folder
 from console_functions import view_folders_fun, view_file_fun, os_fun, about_creator
 from personal_acc import bank_account
 from quiz import play_quiz
+from decorators import decorator_fun
 
 
+@decorator_fun
 def return_to_main_menu():
-    to_main_menu = input('Return the main menu? (yes/no) :')
-    if to_main_menu == 'yes':
+    to_main_menu = input('Return the main menu? (y/n) :')
+    if to_main_menu == 'y':
         console_menu_points()
-    elif to_main_menu == 'no':
+    elif to_main_menu == 'n':
         print('Good luck!!!!')
     else:
         print('Incorrect input! Try again!')
 
 
+@decorator_fun
 def console_menu_points():
-    print('***********')
-    print('1  *Create (folder/file)*')
+    print('1  *Create folder*')
     print('2  *Delete(folder/file)*')
     print('3  *View content of the directory*')
     print('4  *View folders*')
@@ -47,11 +49,11 @@ def console_fail_manager():
             return_to_main_menu()
             break
         elif choose == '4':
-            view_folders_fun()
+            print("The dirs are: ", view_folders_fun())
             return_to_main_menu()
             break
         elif choose == '5':
-            view_file_fun()
+            print("The fails are: ", view_file_fun())
             return_to_main_menu()
             break
         elif choose == '6':
@@ -82,6 +84,5 @@ def console_fail_manager():
 
 
 console_menu_points()
-
 
 

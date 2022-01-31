@@ -1,6 +1,5 @@
 # console file manager functions test
 from victory import date_to_str
-from main_main import separator
 from filemanager import author_info
 from console_functions import directory_content
 

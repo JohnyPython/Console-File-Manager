@@ -1,12 +1,19 @@
 import os
-import subprocess
+from decorators import decorator_fun
 
 
+@decorator_fun
 def create_folder_fun():
-    folder_name = input('Enter the folder name: ')
-    return os.mkdir(folder_name)
+    try:
+        folder_name = input('Enter the folder name: ')
+        return os.mkdir(folder_name)
+    except FileExistsError:
+        print('File already exist!')
+        folder_name = input('Input another name of a folder: ')
+        return os.mkdir(folder_name)
 
 
+@decorator_fun
 def delete_folder_or_file():
     file_or_folder_del = input('You want delete folder or file?:  ')
     if file_or_folder_del == 'file':
@@ -28,27 +35,32 @@ def delete_folder_or_file():
         delete_folder_or_file()
 
 
+@decorator_fun
 def directory_content():
     return "All folders and files:", os.listdir()
 
 
+@decorator_fun
 def view_folders_fun():
     path = os.getcwd()
     for root, dirs, files in os.walk(path):
-        print("The dirs are: ", dirs)
+        return dirs
 
 
+@decorator_fun
 def view_file_fun():
     path = os.getcwd()
     for root, dirs, files in os.walk(path):
-        print("The fails are: ", files)
+        return files
 
 
+@decorator_fun
 def os_fun():
     print(os.name)
     print(os.environ)
 
 
+@decorator_fun
 def about_creator():
     print('Lorem ipsum dolor sit amet, consectetur adipiscing elit,'
           ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
@@ -58,6 +70,7 @@ def about_creator():
           'sunt in culpa qui officia deserunt mollit anim id est laborum.')
 
 
+@decorator_fun
 def change_directory():
     choose_new_dir = input('Enter the name of dir: ')
     os.chdir(choose_new_dir)

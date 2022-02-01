@@ -8,9 +8,9 @@ from decorators import decorator_fun
 @decorator_fun
 def return_to_main_menu():
     to_main_menu = input('Return the main menu? (y/n) :')
-    if to_main_menu == 'y':
+    if to_main_menu == 'y' or to_main_menu == 'yes':
         console_menu_points()
-    elif to_main_menu == 'n':
+    elif to_main_menu == 'n' or to_main_menu == 'no':
         print('Good luck!!!!')
     else:
         print('Incorrect input! Try again!')
@@ -28,11 +28,12 @@ def console_menu_points():
     print('8  *Play quiz*')
     print('9  *Bank account*')
     print('10 *Change directory*')
-    print('11 *Exit*\n***********')
+    print('11 *Exit*')
 
     console_fail_manager()
 
 
+@decorator_fun
 def console_fail_manager():
     while True:
         choose = input('Enter the menu number: ')
@@ -80,7 +81,7 @@ def console_fail_manager():
             print('Good luck!!!!')
             break
         else:
-            print('Not correct input!\nTry again!')
+            print('Not correct input! Try again!')
 
 
 console_menu_points()

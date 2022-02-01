@@ -6,11 +6,12 @@ from decorators import decorator_fun
 def create_folder_fun():
     try:
         folder_name = input('Enter the folder name: ')
-        return os.mkdir(folder_name)
+        os.mkdir(folder_name)
+        print(f'Folder <{folder_name}> was successfully created!')
+        return folder_name
     except FileExistsError:
-        print('File already exist!')
-        folder_name = input('Input another name of a folder: ')
-        return os.mkdir(folder_name)
+        print('Folder already exist! Try another name!')
+        create_folder_fun()
 
 
 @decorator_fun
@@ -20,14 +21,14 @@ def delete_folder_or_file():
         try:
             fail_name = input('Enter the fail name(example:fail.txt): ')
             os.remove(fail_name)
-            print(f'{fail_name} was successfully deleted!')
+            print(f'File <{fail_name}> was successfully deleted!')
         except FileNotFoundError:
             print('That file was not found!')
     elif file_or_folder_del == 'folder':
         try:
             folder_name = input('Enter the folder name: ')
             os.rmdir(folder_name)
-            print(f'{folder_name} was successfully deleted!')
+            print(f'Folder <{folder_name}> was successfully deleted!')
         except FileNotFoundError:
             print('That folder was not found!')
     else:
@@ -54,10 +55,12 @@ def view_file_fun():
         return files
 
 
+# применение тернарного оператора и декоратора
 @decorator_fun
 def os_fun():
-    print(os.name)
-    print(os.environ)
+    input_result = input('Do you want to know the name of platform which you are working with or '
+                         'are you interested in environment variables(platform/var):')
+    print(os.name if input_result == 'platform' else os.environ)
 
 
 @decorator_fun
